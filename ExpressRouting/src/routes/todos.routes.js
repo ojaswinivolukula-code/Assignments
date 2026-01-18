@@ -1,0 +1,40 @@
+import express from "express";
+import { readFileSync, writeFileSync } from "node:fs";
+const _route = express.Router();
+const DB_PATH = "./src/db.json";
+
+_route.post("/add", (req, res) => {
+  const data = JSON.parse(readFileSync(DB_PATH, "utf-8"));
+  data.todos.push(req.body);
+  writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+  res.status(201).json({ message: "Todo added successfully" });
+});
+_route.get("/", (req, res) => {
+  const data = JSON.parse(readFileSync(DB_PATH, "utf-8"));
+  res.json(data.todos);
+});
+_route.get("/:todoId", (req, res) => {
+  const data = JSON.parse(readFileSync(DB_PATH, "utf-8"));
+  const todo = data.todos.find((t) => t.todoId == req.params.todoId);
+  if (!todo) {
+    return res.status(404).json({ message: "Todo not found" });
+  }
+  res.json(todo);
+});
+_route.put("/update/:todoId", (req, res) => {
+  const data = JSON.parse(readFileSync(DB_PATH, "utf-8"));
+  const index = data.todos.findIndex((t) => t.todoId == req.params.todoId);
+  if (index == -1) {
+    return res.status(404).json({ message: "Todo list not found" });
+  }
+  data.todos[index] = { ...data.todos[index], ...req.body };
+  writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+  res.json({ message: "Todo updated successfully" });
+});
+_route.delete("/delete/:todoId", (req, res) => {
+  const data = JSON.parse(readFileSync(DB_PATH, "utf-8"));
+  data.todos = data.todos.filter((t) => t.todoId != req.params.todoId);
+  writeFileSync(DB_PATH, JSON.stringify(data, null, 2));
+  res.json({ message: "Todo deleted successfully" });
+});
+export default _route;

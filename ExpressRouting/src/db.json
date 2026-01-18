@@ -1,0 +1,56 @@
+{
+  "users": [
+    {
+      "0": {
+        "userName": "alice",
+        "id": 1
+      },
+      "1": {
+        "userName": "minni",
+        "id": 2
+      },
+      "userName": "ani",
+      "id": 1
+    },
+    [
+      {
+        "userName": "ani",
+        "id": 1
+      },
+      {
+        "userName": "minni",
+        "id": 2
+      }
+    ]
+  ],
+  "todos": [
+    {
+      "todoName": "Gaming",
+      "todoId": 1
+    },
+    [
+      {
+        "todoName": "Reading",
+        "todoId": 1
+      },
+      {
+        "todoName": "Walking",
+        "todoId": 2
+      }
+    ],
+    [
+      {
+        "todoName": "Reading",
+        "todoId": 1
+      },
+      {
+        "todoName": "Walking",
+        "todoId": 2
+      },
+      {
+        "todoName": "Coding",
+        "todoId": 3
+      }
+    ]
+  ]
+}
