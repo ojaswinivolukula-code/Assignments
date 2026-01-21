@@ -1,0 +1,100 @@
+create table students(
+  id SERIAL primary key,
+  name text not null,
+  email text unique not null,
+  age integer,
+  course text,
+  created_at timestamp default current_timestamp
+);
+INSERT INTO students (name, email, age, course) VALUES
+('Rakesh', 'rakesh.bandaru@gmail.com', 21, 'EEE'),
+('Gayathri', 'gayathri.bommagani@gmail.com', 20, 'ECE'),
+('Sirimuva', 'sirimuva@gmail.com', 22, 'ECE'),
+('Susmitha', 'susmitha.parelly@gmail.com', 20, 'ECE'),
+('Prasad', 'prasad@gmail.com', 19, 'AI&ML'),
+('Rashmitha', 'rashmitha@gmail.com', 25, 'Data Science'),
+('Priya', 'priyaverma@gmail.com', 23, 'Computer Science');
+
+select * from students
+| id | name      | email                        | age | course           | created_at                |
+| -- | --------- | ---------------------------- | --- | ---------------- | ------------------------- |
+| 1  | Rakesh    | rakesh.bandaru@gmail.com     | 21  | EEE              | 2026-01-21 16:52:47.38021 |
+| 2  | Gayathri  | gayathri.bommagani@gmail.com | 20  | ECE              | 2026-01-21 16:52:47.38021 |
+| 3  | Sirimuva  | sirimuva@gmail.com           | 22  | ECE              | 2026-01-21 16:52:47.38021 |
+| 4  | Susmitha  | susmitha.parelly@gmail.com   | 20  | ECE              | 2026-01-21 16:52:47.38021 |
+| 5  | Prasad    | prasad@gmail.com             | 19  | AI&ML            | 2026-01-21 16:52:47.38021 |
+| 6  | Rashmitha | rashmitha@gmail.com          | 25  | Data Science     | 2026-01-21 16:52:47.38021 |
+| 7  | Priya     | priyaverma@gmail.com         | 23  | Computer Science | 2026-01-21 16:52:47.38021 |
+
+
+select * from students  where age > 20
+| id | name      | email                    | age | course           | created_at                |
+| -- | --------- | ------------------------ | --- | ---------------- | ------------------------- |
+| 1  | Rakesh    | rakesh.bandaru@gmail.com | 21  | EEE              | 2026-01-21 16:52:47.38021 |
+| 3  | Sirimuva  | sirimuva@gmail.com       | 22  | ECE              | 2026-01-21 16:52:47.38021 |
+| 6  | Rashmitha | rashmitha@gmail.com      | 25  | Data Science     | 2026-01-21 16:52:47.38021 |
+| 7  | Priya     | priyaverma@gmail.com     | 23  | Computer Science | 2026-01-21 16:52:47.38021 |
+
+
+select name,email from students
+| name      | email                        |
+| --------- | ---------------------------- |
+| Rakesh    | rakesh.bandaru@gmail.com     |
+| Gayathri  | gayathri.bommagani@gmail.com |
+| Sirimuva  | sirimuva@gmail.com           |
+| Susmitha  | susmitha.parelly@gmail.com   |
+| Prasad    | prasad@gmail.com             |
+| Rashmitha | rashmitha@gmail.com          |
+| Priya     | priyaverma@gmail.com         |
+
+
+select * from students where course='ECE'
+| id | name     | email                        | age | course | created_at                |
+| -- | -------- | ---------------------------- | --- | ------ | ------------------------- |
+| 2  | Gayathri | gayathri.bommagani@gmail.com | 20  | ECE    | 2026-01-21 16:52:47.38021 |
+| 3  | Sirimuva | sirimuva@gmail.com           | 22  | ECE    | 2026-01-21 16:52:47.38021 |
+| 4  | Susmitha | susmitha.parelly@gmail.com   | 20  | ECE    | 2026-01-21 16:52:47.38021 |
+
+
+update students set age=21 where name='Susmitha'
+| id | name      | email                        | age | course           | created_at                |
+| -- | --------- | ---------------------------- | --- | ---------------- | ------------------------- |
+| 1  | Rakesh    | rakesh.bandaru@gmail.com     | 21  | EEE              | 2026-01-21 16:52:47.38021 |
+| 2  | Gayathri  | gayathri.bommagani@gmail.com | 20  | ECE              | 2026-01-21 16:52:47.38021 |
+| 3  | Sirimuva  | sirimuva@gmail.com           | 22  | ECE              | 2026-01-21 16:52:47.38021 |
+| 5  | Prasad    | prasad@gmail.com             | 19  | AI&ML            | 2026-01-21 16:52:47.38021 |
+| 6  | Rashmitha | rashmitha@gmail.com          | 25  | Data Science     | 2026-01-21 16:52:47.38021 |
+| 7  | Priya     | priyaverma@gmail.com         | 23  | Computer Science | 2026-01-21 16:52:47.38021 |
+| 4  | Susmitha  | susmitha.parelly@gmail.com   | 21  | ECE              | 2026-01-21 16:52:47.38021 |
+
+
+update students set course='Artifical Intelligence' where course='ECE'
+| id | name      | email                        | age | course                 | created_at                |
+| -- | --------- | ---------------------------- | --- | ---------------------- | ------------------------- |
+| 1  | Rakesh    | rakesh.bandaru@gmail.com     | 21  | EEE                    | 2026-01-21 16:52:47.38021 |
+| 5  | Prasad    | prasad@gmail.com             | 19  | AI&ML                  | 2026-01-21 16:52:47.38021 |
+| 6  | Rashmitha | rashmitha@gmail.com          | 25  | Data Science           | 2026-01-21 16:52:47.38021 |
+| 7  | Priya     | priyaverma@gmail.com         | 23  | Computer Science       | 2026-01-21 16:52:47.38021 |
+| 2  | Gayathri  | gayathri.bommagani@gmail.com | 20  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
+| 3  | Sirimuva  | sirimuva@gmail.com           | 22  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
+| 4  | Susmitha  | susmitha.parelly@gmail.com   | 21  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
+
+
+delete from students where age=22
+| id | name      | email                        | age | course                 | created_at                |
+| -- | --------- | ---------------------------- | --- | ---------------------- | ------------------------- |
+| 1  | Rakesh    | rakesh.bandaru@gmail.com     | 21  | EEE                    | 2026-01-21 16:52:47.38021 |
+| 5  | Prasad    | prasad@gmail.com             | 19  | AI&ML                  | 2026-01-21 16:52:47.38021 |
+| 6  | Rashmitha | rashmitha@gmail.com          | 25  | Data Science           | 2026-01-21 16:52:47.38021 |
+| 7  | Priya     | priyaverma@gmail.com         | 23  | Computer Science       | 2026-01-21 16:52:47.38021 |
+| 2  | Gayathri  | gayathri.bommagani@gmail.com | 20  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
+| 4  | Susmitha  | susmitha.parelly@gmail.com   | 21  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
+
+
+delete from students where age>21
+| id | name     | email                        | age | course                 | created_at                |
+| -- | -------- | ---------------------------- | --- | ---------------------- | ------------------------- |
+| 1  | Rakesh   | rakesh.bandaru@gmail.com     | 21  | EEE                    | 2026-01-21 16:52:47.38021 |
+| 5  | Prasad   | prasad@gmail.com             | 19  | AI&ML                  | 2026-01-21 16:52:47.38021 |
+| 2  | Gayathri | gayathri.bommagani@gmail.com | 20  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
+| 4  | Susmitha | susmitha.parelly@gmail.com   | 21  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
