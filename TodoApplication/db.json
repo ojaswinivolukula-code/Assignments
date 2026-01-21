@@ -1,0 +1,19 @@
+{
+  "todos": [
+    {
+      "id": 1769000109962,
+      "title": "Reading",
+      "completed": false
+    },
+    {
+      "id": 1769000120016,
+      "title": "Coding",
+      "completed": false
+    },
+    {
+      "id": 1769000133570,
+      "title": "Running",
+      "completed": false
+    }
+  ]
+}
