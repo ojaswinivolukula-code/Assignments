@@ -1,0 +1,82 @@
+select count(*) from students
+| count |
+| ----- |
+| 4     |
+
+
+select AVG(age) as avg_age from students
+| avg_age             |
+| ------------------- |
+| 20.2500000000000000 |
+
+
+select MIN(age) as min_age from students
+| min_age |
+| ------- |
+| 19      |
+
+select MAX(age) as max_age from students
+| max_age |
+| ------- |
+| 21      |
+
+
+select course,count(*) from students group by course
+| course                 | count |
+| ---------------------- | ----- |
+| AI&ML                  | 1     |
+| Artifical Intelligence | 2     |
+| EEE                    | 1     |
+
+
+select count(*) from students where age>20
+| count |
+| ----- |
+| 2     |
+
+
+
+select course,count(*) from students group by course
+| course                 | count |
+| ---------------------- | ----- |
+| AI&ML                  | 1     |
+| Artifical Intelligence | 2     |
+| EEE                    | 1     |
+
+
+select course,count(*) from students group by course having count(*)>1
+| course                 | count |
+| ---------------------- | ----- |
+| Artifical Intelligence | 2     |
+
+
+select course,count(*) as student_count from students group by course order by student_count desc
+| course                 | student_count |
+| ---------------------- | ------------- |
+| Artifical Intelligence | 2             |
+| AI&ML                  | 1             |
+| EEE                    | 1             |
+
+
+select * from students  order by created_at desc limit 3
+| id | name     | email                        | age | course                 | created_at                |
+| -- | -------- | ---------------------------- | --- | ---------------------- | ------------------------- |
+| 1  | Rakesh   | rakesh.bandaru@gmail.com     | 21  | EEE                    | 2026-01-21 16:52:47.38021 |
+| 5  | Prasad   | prasad@gmail.com             | 19  | AI&ML                  | 2026-01-21 16:52:47.38021 |
+| 2  | Gayathri | gayathri.bommagani@gmail.com | 20  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
+
+
+select * from students order by age desc limit 5
+| id | name     | email                        | age | course                 | created_at                |
+| -- | -------- | ---------------------------- | --- | ---------------------- | ------------------------- |
+| 1  | Rakesh   | rakesh.bandaru@gmail.com     | 21  | EEE                    | 2026-01-21 16:52:47.38021 |
+| 4  | Susmitha | susmitha.parelly@gmail.com   | 21  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
+| 2  | Gayathri | gayathri.bommagani@gmail.com | 20  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
+| 5  | Prasad   | prasad@gmail.com             | 19  | AI&ML                  | 2026-01-21 16:52:47.38021 |
+
+
+select * from students where course='Artifical Intelligence' order by age desc
+| id | name     | email                        | age | course                 | created_at                |
+| -- | -------- | ---------------------------- | --- | ---------------------- | ------------------------- |
+| 4  | Susmitha | susmitha.parelly@gmail.com   | 21  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
+| 2  | Gayathri | gayathri.bommagani@gmail.com | 20  | Artifical Intelligence | 2026-01-21 16:52:47.38021 |
